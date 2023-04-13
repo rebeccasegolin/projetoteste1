@@ -19,7 +19,7 @@ Meu primeiro projeto web através da RocketSeat<br/>
 <br>
 
 <p align="center">
-  <img alt="projeto Rebecca" src=".github/capa.jpg" width="100%">
+  <img alt="projeto Rebecca" src=".github/preview.jpg" width="100%">
 </p>
 
 ## 🚀 Tecnologias
