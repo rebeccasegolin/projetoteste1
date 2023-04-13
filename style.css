@@ -42,7 +42,9 @@ body * {
 }
 
 #container {
-  width: 360px;
+  /*width: 360px;*/
+  width: 100%;
+  max-width: 588px; /*mudando o width para 100% consigo ter uma melhor visualização em mobile, e com um valor máximo de largura, ao entrar em um computador, o container não vai de uma ponta a outra*/
   /*a altura muitas vezes não é necessária, pois ela vai seguir conforme o conteúdo da página, sendo necessária, talvez, se for aplicar uma borda*/
   /*border: 1px white solid; - estava usando a borda para visualizar, não preciso mais dela*/
   /*a margem, como outros atributos, segue a sequência do relógio: top, right, bottom, left. Se eu coloco só um valor em pixel aplica para todos, se eu coloco dois valores, o primeiro vai aplicar em cima e embaixo e o segundo nas laterais, se eu aplicar três valores, vai aplicar o primeiro em cima, o segundo nas laterais, e o terceiro embaixo, e se colocar quatro valores, vai seguir a ordem do relógio (cima, direita, baixo, esquerda)*/
