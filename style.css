@@ -1,0 +1,175 @@
+/*seletor universal dizendo: todos os elementos não terão margem, espaço interno padrão do navegador
+Também informo que a medida interna das caixas vai ser medida através da borda*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Seleciona o elemento raiz do documento: <html> no caso do HTML.
+   O :root pode ser útil para declarar uma variável CSS global.
+   A pseudo-classe CSS :root se equipara à raiz de uma árvore, que por sua vez representa o documento. Aplicado ao HTML, :root representa o elemento <html> e é idêntico ao seletor html, exceto que sua especificidade é mais alta.
+   */
+:root {
+  --text-color: white; /*este --text-color é um nome que eu dei para padronizar, e todos os lugares onde eu colocar a variável --text-color vai levar o white. A variável se dará em formato de função var(--text-color)*/
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --cor-borda: rgba(255, 255, 255, 0.5);
+  --surface-color:  rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(255, 255, 255, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/moon.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobilelight.jpg);
+  --cor-borda: rgba(0, 0, 0, 0.5);
+  --surface-color:  rgba(0, 0, 0, 0.05); /*com mais transparência*/
+  --surface-color-hover: rgba(0, 0, 0, 0.1);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/sun.svg);
+}
+
+body {
+  /*     background: color image repeat position/size      */
+  background: var(--bg-url) no-repeat top center / cover;
+}
+
+/* o * depois do body significa que é um seletor universal, ou seja, vai ser aplicado a todo o body */
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 360px;
+  /*a altura muitas vezes não é necessária, pois ela vai seguir conforme o conteúdo da página, sendo necessária, talvez, se for aplicar uma borda*/
+  /*border: 1px white solid; - estava usando a borda para visualizar, não preciso mais dela*/
+  /*a margem, como outros atributos, segue a sequência do relógio: top, right, bottom, left. Se eu coloco só um valor em pixel aplica para todos, se eu coloco dois valores, o primeiro vai aplicar em cima e embaixo e o segundo nas laterais, se eu aplicar três valores, vai aplicar o primeiro em cima, o segundo nas laterais, e o terceiro embaixo, e se colocar quatro valores, vai seguir a ordem do relógio (cima, direita, baixo, esquerda)*/
+  margin: 56px auto 0px;
+  padding: 0px 24px;
+}
+
+ /*profile*/
+
+#profile img {
+  width: 112px;
+  /* div é um elemento block, porém imagem é um elemento inline. Elementos inline não permitem uma margem auto. Para funcionar é preciso transformar o display em block, ou, em alguns casos, o display inline-block aceita algumas funções de ambos os displays, mas não é o caso da margin: auto, então ficaria:
+
+margin: auto;
+  display: block;
+
+  Uma outra opção seria fazer um
+  #profile {
+    text-align: center;
+  },
+  que alinharia todos os itens deste ID ao centro, porém sem o display block, pois no momento que colocasse o display blolck não funcionaria, assim como a margin não funciona para display inline. É o que nós vamos usar, pois quero que não só imagem, como também o texto fique alinhado */
+}
+
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+#profile p {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/*switch*/
+
+#switch {
+  position: relative; /*o position relative vai relativizar a posição absoluta do switch buttom, pois sem ele, quando eu coloco no button um left:0, o botão vai para a extrema esquerda da página. Porém, com esse position relative, esse absoluto fica relativo ao tamanho do switch, e seus extremos não vão fugir das limitações da div*/
+  width: 64px;
+  margin: 4px auto; /*esse margin serviu para alinhar a div (display block) ao centro da página. 4px aplica em cima e embaixo e o auto nas laterais*/
+}
+
+#switch button {
+  height: 32px;
+  width: 32px;
+  background: white var(--switch-bg-url) no-repeat center; /*center centralizou a imagem, o background vem por padrão com repetição, e apareceria a imagem várias vezes, então por isso o no-repeat*/
+  border: 0;
+  border-radius: 50%;
+
+  position: absolute; /*permite sobreposição de camadas*/
+  z-index: 1; /*mudando andar dele para andar 1, z-index é permitido pelo position absolute. O span tá no andar 0, ficando abaixo*/
+  left: 0;
+  transform:translateY(-50%); /*Visto que o botão se enquadra no tamanho do span, seu topo está alinhado ao span, porém ele deve ficar um pouco acima para ficar alinhado ao eixo X do span. Para isso, precisamos movê-lo um pouco para cima do eixo Y*/
+  top: 50%; /*com o transform mais esse top conseguimos alinhar objetos de posição absoluta, pois com o translateY(-50%) o topo do objeto vai emparelhar com o eixo X, e ao jogar o top 50%, o objeto vai subir esses 50% de volta, ultrapassando o topo do span, e ficando com o seu eixo X alinhado ao eixo X do span*/
+}
+
+.light #switch button {
+  right: 0;
+  left: initial; /*(?) por algum motivo, sem o left initial o right:0 não funciona. Acredito q seja pq tem um left:0 logo acima, no switch button*/
+}
+
+#switch span {
+  /*span tem por padrão display inline, que não aceita largura*/
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--cor-borda);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/*links*/
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  /*o gap dá espaço entre os elementos filhos da ul, no caso as ul li, mas só funciona ao colocar display flex, pois o display aplica layout aos filhos*/
+  gap: 16px;
+  padding: 24px 0;
+}
+ul li a {
+    /*ao usar o display flex, permiti que o o <a> que é um elemento inline tenha certa felxibilidade de elementos block, tornando todo o espaço do bloco clicável*/
+  display: flex;
+  justify-content: center; /*se o display fosse block, por ser texto dentro, um text-align:center funcionaria também*/
+  padding: 16px 24px; /*height: 52px;*/
+  align-items: center; /*enquanto o justify-content alinha no eixo x (verticalmente), o align-itens alinha no eixo y (horizontalmente), de acordo com a altura*/
+  background: var(--surface-color); /*branco com 0.1 de transparência*/
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  -webkit-backdrop-filter: blur(4px); /*essa propriedade deixa um blur de fundo, porém ela pode dar algum erro dependendo do navegador, por isso esse -webkit- serve para funcionar em alguns navegadores*/
+  text-decoration: none; /*tira a linha de baixo*/
+  font-weight: 500; /*como importamos da web uma fonte de peso inicial 400, se colocar font-weight: normal ela já vai ter peso 400. Se eu colocar como bold, ou seja, negrito, vai ser o mesmo que o peso 500*/
+  transition: background 0.2s;
+}
+
+/*hover é o comportamento quando passar o mouse por cima*/
+/*pseudo-selector*/
+ul li a:hover {
+background: var(--surface-color-hover);
+border: 1.5px solid var(--text-color);
+}
+
+#social-links {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0px;
+  font-size: 24px;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px; /*manteve distancia entre os elementos, nao sendo necessario o gap la no #social-links*/ 
+  border-radius: 50px;
+  transition: background .2s;
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+}

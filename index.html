@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="light"> <!--essa classe poderia ser aplicada tanto aqui quanto no body, já que vai fazer parte da visibilidade-->
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projeto Inicial</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="container">
+    <!--para inserir uma nova div id, escrevi #nomedonovoid e dei enter, no caso #profile enter-->
+        <div id="profile">
+        <img src="./assets/Avatar-light.png" alt="foto de Rebecca Segolin de perfil com sorriso aberto e olhos fechados">
+        <p>@rebeccasegolin</p>
+        </div>
+        <div id="switch" onclick="toggleMode()"> <!--este taggleMode é uma função javascript-->
+            <button></button>
+            <!--O elemento HTML <span> é um conteiner generico em linha para conteúdo fraseado , que não representa nada por natureza. Ele pode ser usado para agrupar elementos para fins de estilo (usando os atributos class ou id ), ou para compartilhar valores de atributos como lang. Ele deve ser usado somente quando nenhum outro elemento semântico for apropriado. <span> é muito parecido com o elemento <div> , entretando <div> é um elemento de nível de bloco enquanto <span> é um elemento em linha.-->
+            <span></span>
+        </div>
+    <!--ul é para cria listas não ordenadas-->
+        <ul>
+        <!--li é um item da lista-->
+        <li>
+           <!--o "#" no lugar do link permite que o texto seja clicável, mas não vai levar à edereço nenhum-->
+            <a href="#">Acessar Informativo</a>
+        </li>
+        <li>
+            <!--o atributo target="_blank" permite que o url abra em outra aba, não na aba que a pessoa está atualmente-->
+            <a href="#" target="_blank">Ver meu portfólio</a>
+        </li>
+        <li>
+            <a href="#">Acessar meu github</a>
+        </li>
+        <li>
+            <a href="#">Conheça minha família</a>
+        </li>
+        </ul>
+        <div id="social-links">
+           <a href="#" target="_blank">
+                <ion-icon name="logo-github"></ion-icon></a>
+            <a href="#" target="_blank">
+                <ion-icon name="logo-instagram"></ion-icon></a>
+            <a href="#" target="_blank">
+                <ion-icon name="logo-youtube"></ion-icon></a>
+            <a href="#" target="_blank">
+                <ion-icon name="logo-linkedin"></ion-icon></a>
+        </div>
+        <footer>
+            Feito com ♥ pela <a href="#" target="_blank">Família Segolin</a> 
+        </footer>
+    </div>
+     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script src="assets/script.js"></script>
+  </body>
+</html>
