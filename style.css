@@ -106,7 +106,7 @@ margin: auto;
 }
 
 #switch button:hover {
-  outline: 4px solid var(--highlight-color);
+  outline: 8px solid var(--highlight-color);
 }
 
 .light #switch button {
@@ -195,9 +195,6 @@ footer {
     .light {
       --bg-url: url(./assets/bg-light.jpg);
     } /*a media queries só funciona quando há no html o <meta name="viewport" content="width=device-width, initial-scale=1.0" />*/
-    #switch button:hover {
-      outline: 8px solid var(--highlight-color);
-    }
 }
 
 /*animation*/
