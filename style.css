@@ -33,6 +33,7 @@ Também informo que a medida interna das caixas vai ser medida através da borda
 body {
   /*     background: color image repeat position/size      */
   background: var(--bg-url) no-repeat top center / cover;
+  height: 100vh; /*altura 100% do viewport. Ou seja, o background se adapta na altura ao tamanho da tela*/
 }
 
 /* o * depois do body significa que é um seletor universal, ou seja, vai ser aplicado a todo o body */
@@ -174,4 +175,15 @@ footer {
   padding: 24px 0;
   text-align: center;
   font-size: 14px;
+}
+
+/*media queries - no CSS, tudo que começa com @ se chama at rolling*/
+
+@media (min-width: 700px) /*na sua largura mínima de 700px vai ser a seguinte regra:*/  {
+  :root {
+    --bg-url: url(./assets/bg.jpg);
+    }
+    .light {
+      --bg-url: url(./assets/bg-light.jpg);
+    } /*a media queries só funciona quando há no html o <meta name="viewport" content="width=device-width, initial-scale=1.0" />*/
 }
