@@ -105,10 +105,6 @@ margin: auto;
   animation: deslizar-esquerda 0.2s; /*não precisa de forwards pq o left initial já é 0*/
 }
 
-#switch button:hover {
-  outline: 8px solid var(--highlight-color);
-}
-
 .light #switch button {
   /*right: 0;
   left: initial; /*(?) por algum motivo, sem o left initial o right:0 não funciona. Acredito q seja pq tem um left:0 logo acima, no switch button*/
@@ -195,6 +191,9 @@ footer {
     .light {
       --bg-url: url(./assets/bg-light.jpg);
     } /*a media queries só funciona quando há no html o <meta name="viewport" content="width=device-width, initial-scale=1.0" />*/
+    #switch button:hover {
+      outline: 8px solid var(--highlight-color);
+    }
 }
 
 /*animation*/
