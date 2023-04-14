@@ -84,7 +84,7 @@ margin: auto;
 /*switch*/
 
 #switch {
-  position: relative; /*o position relative vai relativizar a posição absoluta do switch buttom, pois sem ele, quando eu coloco no button um left:0, o botão vai para a extrema esquerda da página. Porém, com esse position relative, esse absoluto fica relativo ao tamanho do switch, e seus extremos não vão fugir das limitações da div*/
+  position: relative; /*o position relative vai relativizar a posição absoluta do switch buttom, pois sem ele, quando eu coloco no button um left:0, o botão vai para a extrema esquerda da página. Porém, com esse position relative, o absoluto do button fica relativo ao tamanho do switch, e seus extremos não vão fugir das limitações da div*/
   width: 64px;
   margin: 4px auto; /*esse margin serviu para alinhar a div (display block) ao centro da página. 4px aplica em cima e embaixo e o auto nas laterais*/
 }
@@ -106,7 +106,7 @@ margin: auto;
 }
 
 #switch button:hover {
-  outline: 8px solid var(--highlight-color);
+  outline: 8px auto var(--highlight-color);
 }
 
 .light #switch button {
