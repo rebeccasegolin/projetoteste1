@@ -33,7 +33,7 @@ Também informo que a medida interna das caixas vai ser medida através da borda
 body {
   /*     background: color image repeat position/size      */
   background: var(--bg-url) no-repeat top center / cover;
-  height: 100vh; /*altura 100% do viewport. Ou seja, o background se adapta na altura ao tamanho da tela*/
+  height: 100vh; /*altura 100% do viewport (parte visível). VH = viewport height. Ou seja, o background se adapta na altura ao tamanho da tela. sem o viewport height em 100% a altura do background será do tamanho do conteúdo */
 }
 
 /* o * depois do body significa que é um seletor universal, ou seja, vai ser aplicado a todo o body */
@@ -101,11 +101,20 @@ margin: auto;
   left: 0;
   transform:translateY(-50%); /*Visto que o botão se enquadra no tamanho do span, seu topo está alinhado ao span, porém ele deve ficar um pouco acima para ficar alinhado ao eixo X do span. Para isso, precisamos movê-lo um pouco para cima do eixo Y*/
   top: 50%; /*com o transform mais esse top conseguimos alinhar objetos de posição absoluta, pois com o translateY(-50%) o topo do objeto vai emparelhar com o eixo X, e ao jogar o top 50%, o objeto vai subir esses 50% de volta, ultrapassando o topo do span, e ficando com o seu eixo X alinhado ao eixo X do span*/
+
+  animation: deslizar-esquerda 0.2s; /*não precisa de forwards pq o left initial já é 0*/
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 
 .light #switch button {
-  right: 0;
+  /*right: 0;
   left: initial; /*(?) por algum motivo, sem o left initial o right:0 não funciona. Acredito q seja pq tem um left:0 logo acima, no switch button*/
+
+  /*visto que vamos fazer uma animação de deslize, substituí o right:0 pela tag animation*/
+  animation: deslizar-direita .4s forwards; /*deslizar-direita: nome que dei a minha keyframe. a forwards permite que a propriedade da keyframe se mantenha; caso contrário, após esses 0.4s, meu button voltará para o left initial = 0*/
 }
 
 #switch span {
@@ -177,7 +186,7 @@ footer {
   font-size: 14px;
 }
 
-/*media queries - no CSS, tudo que começa com @ se chama at rolling*/
+/*media queries - no CSS, tudo que começa com @ se chama at rule*/
 
 @media (min-width: 700px) /*na sua largura mínima de 700px vai ser a seguinte regra:*/  {
   :root {
@@ -186,4 +195,24 @@ footer {
     .light {
       --bg-url: url(./assets/bg-light.jpg);
     } /*a media queries só funciona quando há no html o <meta name="viewport" content="width=device-width, initial-scale=1.0" />*/
+}
+
+/*animation*/
+/*keyframes definem animações*/
+@keyframes deslizar-direita {
+  from {
+      left: 0;
+  }
+  to {
+      left: 50%; /*fiz um teste e o left 100% faz com que o objeto saia dos limites da div e fique à direita encostado do lado de fora. Em 50%, fica à direita encostado do lado de dentro, dentro dos limites da div.*/
+  }
+}
+
+@keyframes deslizar-esquerda {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
 }
